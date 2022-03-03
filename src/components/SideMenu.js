@@ -2,9 +2,28 @@ import { Avatar, Drawer, Grid, List, ListItem, ListItemIcon, ListItemText } from
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
+const drawerWidth = 240;
+
+const useStyles = makeStyles(theme => ({
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+        backgroundImage: `linear-gradient(#cfd9df,#e2ebf0)`,
+        color: 'grey',
+    },
+    bigAvatar: {
+        margin: 30,
+        width: 100,
+        height: 100,
+    },
+}));
+
 const SideMenu = () => {
 
-    const classes = makeStyles();
+    const classes = useStyles();
 
     return (
         <Drawer
@@ -24,9 +43,9 @@ const SideMenu = () => {
             </Grid>
             <List>
                 {['Profile', 'Sign Out'].map((text, index) => (
-                    <ListItem>
+                    <ListItem button key={text}>
                         <ListItemIcon>
-
+                            {/* {index % 2 === 0 ? <AccountCircle /> : <ExitToApp />} */}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
